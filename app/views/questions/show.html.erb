@@ -1,3 +1,7 @@
+<% currently_at('QUestion') %>
+
+<% provide :page_title, @question.title %>
+
 <h1 class="mb-4"><%= @question.title %></h1>
   <time datetime="<%= @question.formatted_created_at %>">
     <%= @question.formatted_created_at %>
@@ -20,19 +24,7 @@
 
   <%= render 'shared/errors', object: @answer %>
 
-  <%= form_with model: [@question, @answer], data: { turbo: false } do |f| %>
-    <div class="mb-3 row">
-      <div class="col-sm-2 col-form-label">
-        <%= f.label :body %>
-      </div>
-
-      <div class="col-sm-10">
-        <%= f.text_area :body, class: 'form-control' %>
-      </div>
-    </div>
-
-    <%= f.submit 'Submit', class: 'btn btn-primary' %>
-  <% end %>
+  <%= render 'answers/answer_form' %>
 
 <hr>
 

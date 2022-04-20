@@ -1,5 +1,7 @@
 class AnswersController < ApplicationController
   before_action :set_question!
+  before_action :set_answer!, except: :create
+
   def create
     @answer = @question.answers.build(answer_params)
 
@@ -13,18 +15,14 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    answer = @question.answers.find(params[:id])
-    answer.destroy
+    @answer.destroy
     flash[:success] = 'Answer deleted!'
     redirect_to question_path(@question), status: :see_other
   end
 
-  def edit
-    @answer = @question.answers.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @answer = Answer.find(params[:id])
     if @answer.update(answer_params)
       flash[:success] = 'Answer updated!'
       redirect_to question_path(@question)
@@ -37,6 +35,10 @@ class AnswersController < ApplicationController
 
   def set_question!
     @question = Question.find(params[:question_id])
+  end
+
+  def set_answer!
+    @answer = @question.answers.find(params[:id])
   end
 
   def answer_params
