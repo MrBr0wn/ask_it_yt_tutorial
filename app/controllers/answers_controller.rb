@@ -19,6 +19,20 @@ class AnswersController < ApplicationController
     redirect_to question_path(@question), status: :see_other
   end
 
+  def edit
+    @answer = @question.answers.find(params[:id])
+  end
+
+  def update
+    @answer = Answer.find(params[:id])
+    if @answer.update(answer_params)
+      flash[:success] = 'Answer updated!'
+      redirect_to question_path(@question)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def set_question!

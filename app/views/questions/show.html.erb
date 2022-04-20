@@ -46,6 +46,7 @@
     <p>
       <%= answer.body %>
     </p>
+    <%= link_to 'Edit', edit_question_answer_path(@question, answer), class: 'btn btn-secondary' %>
     <%= link_to 'Destroy',
                 question_answer_path(@question, answer),
                 data: {
