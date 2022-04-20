@@ -16,7 +16,7 @@ class AnswersController < ApplicationController
     answer = @question.answers.find(params[:id])
     answer.destroy
     flash[:success] = 'Answer deleted!'
-    redirect_to question_path(@question)
+    redirect_to question_path(@question), status: :see_other
   end
 
   private
