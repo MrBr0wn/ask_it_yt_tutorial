@@ -74,3 +74,5 @@ gem 'rubocop-rails'
 gem 'pagy', '~> 5.10.1'
 
 gem 'draper', '~> 4.0'
+
+gem 'valid_email2', '~> 4.0'
