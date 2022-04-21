@@ -1,4 +1,4 @@
-<% currently_at('QUestion') %>
+<% currently_at('Questions') %>
 
 <% provide :page_title, @question.title %>
 
@@ -24,14 +24,16 @@
 
   <h2>Write your answer</h2>
 
-  <%= render 'shared/errors', object: @answer %>
-
   <%= render 'answers/answer_form' %>
 
 <hr>
 
 <h2 class="mt-5">Answers</h2>
 
+<%== pagy_bootstrap_nav @pagy %>
+
 <%= render partial: 'answers/answer',
             collection: @answers,
             as: :answer, locals: { question: @question } %>
+
+<%== pagy_bootstrap_nav @pagy %>
