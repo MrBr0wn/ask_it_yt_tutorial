@@ -15,11 +15,15 @@ class User < ApplicationRecord
     self.remember_token = SecureRandom.urlsafe_base64
 
     # Insert record(hash) to the table. .digest() is a method based has_secure_password
+    # rubocop:disable Rails/SkipsModelValidations
     update_column :remember_token_digest, digest(remember_token)
+    # rubocop:enable Rails/SkipsModelValidations
   end
 
   def forget_me
+    # rubocop:disable Rails/SkipsModelValidations
     update_column :remember_token_digest, nil
+    # rubocop:enable Rails/SkipsModelValidations
     self.remember_token = nil
   end
 
@@ -48,14 +52,15 @@ class User < ApplicationRecord
   end
 
   def password_complexity
+    message = 'complexity requirement not met. Length should be 8-70 characters and' \
+    'include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
     # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
     return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
 
-    errors.add :password,
-               'complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
+    errors.add :password, message
   end
 
   def password_presence
-    errors.add(:password, :blank) unless password_digest.present?
+    return errors.add(:password, :blank) if password_digest.blank?
   end
 end

@@ -10,10 +10,7 @@ class SessionsController < ApplicationController
     # & - if user not found then condition equals as false
     # exception will not throw
     if user&.authenticate(params[:password])
-      log_in(user)
-      remember(user) if params[:remember_me] == '1'
-      flash[:success] = "Welcome back, #{current_user.name_or_email}"
-      redirect_to root_path
+      do_log_in(user)
     else
       flash[:warning] = 'Incorrect email/password!'
       render :new
@@ -23,6 +20,15 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     flash[:success] = 'Goodbye!'
+    redirect_to root_path
+  end
+
+  private
+
+  def do_log_in(user)
+    log_in(user)
+    remember(user) if params[:remember_me] == '1'
+    flash[:success] = "Welcome back, #{current_user.name_or_email}"
     redirect_to root_path
   end
 end

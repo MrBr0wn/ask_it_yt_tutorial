@@ -70,7 +70,7 @@ group :development do
 
   gem 'rubocop-rails', '~> 2.14', require: false
 
-  gem 'rubocop', '~> 1.28', require: false
+  gem 'rubocop', '~> 1.28.2', require: false
 
   gem 'rubocop-performance', '~> 1.13', require: false
 end
