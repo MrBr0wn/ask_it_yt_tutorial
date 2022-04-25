@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :old_password
+  attr_accessor :old_password, :remember_token
 
   has_secure_password validations: false
 
@@ -10,7 +10,36 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
   validate :password_complexity
 
+  def remember_me
+    # https://ruby-doc.org/stdlib-2.5.1/libdoc/securerandom/rdoc/Random/Formatter.html#urlsafe_base64-method
+    self.remember_token = SecureRandom.urlsafe_base64
+
+    # Insert record(hash) to the table. .digest() is a method based has_secure_password
+    update_column :remember_token_digest, digest(remember_token)
+  end
+
+  def forget_me
+    update_column :remember_token_digest, nil
+    self.remember_token = nil
+  end
+
+  # Checking if the token matches the token from DB
+  def remember_token_authenticated?(remember_token)
+    return false unless remember_token_digest.authenticate?
+
+    BCrypt::Password.new(remember_token_digest).is_password?(remember_token)
+  end
+
   private
+
+  def digest(string)
+    cost = if ActiveModel::SecurePassword.min_cost
+             BCrypt::Engine::MIN_COST
+           else
+             BCrypt::Engine.cost
+           end
+    BCrypt::Password.create(string, cost:)
+  end
 
   def correct_old_password
     return if BCrypt::Password.new(password_digest_was).is_password?(old_password)

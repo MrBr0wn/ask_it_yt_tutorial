@@ -11,11 +11,12 @@ class SessionsController < ApplicationController
     # exception will not throw
     if user&.authenticate(params[:password])
       log_in(user)
+      remember(user) if params[:remember_me] == '1'
       flash[:success] = "Welcome back, #{current_user.name_or_email}"
       redirect_to root_path
     else
       flash[:warning] = 'Incorrect email/password!'
-      redirect_to new_session_path
+      render :new
     end
   end
 
