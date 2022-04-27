@@ -54,6 +54,8 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+
+  gem 'pry-rails'
 end
 
 group :development do
@@ -75,8 +77,24 @@ group :development do
   gem 'rubocop-performance', '~> 1.13', require: false
 end
 
+# for pagination
 gem 'pagy', '~> 5.10.1'
 
+# for decorating inside views
 gem 'draper', '~> 4.0'
 
+# emails validator
 gem 'valid_email2', '~> 4.0'
+
+# for manipulating with archives
+gem 'rubyzip', '~> 2'
+
+# for manipulating (create/write) with Excel files
+gem 'caxlsx', '~> 3.1'
+gem 'caxlsx_rails', '~> 0.6'
+
+# for manipulating (read) with Excel files
+gem 'rubyXL', '~> 3.4'
+
+# for multiple importing from Excel file to DB
+gem 'activerecord-import', '~> 1.2'
