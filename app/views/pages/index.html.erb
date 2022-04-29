@@ -1,5 +1,7 @@
-<% currently_at('Home') %>
+<!-- equal translate('menu.home') -->
+<% currently_at t('menu.home') %>
 
-<h1>Welcome to AskIt!</h1>
+<!-- equal t('.title'), bacause view is inside views/pages/index.html.erb (lazy-translate)  -->
+<h1><%= t('pages.index.title') %></h1>
 
 &copy; @user_name <%= Time.now.year %>

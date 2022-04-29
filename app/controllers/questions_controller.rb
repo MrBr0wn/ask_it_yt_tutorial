@@ -40,7 +40,8 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    flash[:success] = 'Question deleted!'
+    # i18n lazy-translate
+    flash[:success] = t('.success')
     redirect_to questions_path, status: :see_other
   end
 

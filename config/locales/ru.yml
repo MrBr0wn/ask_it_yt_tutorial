@@ -1,0 +1,24 @@
+ru:
+  hello: "Привет, мир!"
+
+  en: "Eng"
+  ru: "Рус"
+
+  activerecord:
+    attributes:
+      question:
+        title: "Заголовок"
+        body: "Текст"
+      answer:
+        body: "Текст"
+
+  pages:
+    index:
+      title: "Добро пожаловать в AskIt!"
+
+  menu:
+    home: "Главная"
+
+  questions:
+    destroy:
+      success: "Вопрос удалён!"

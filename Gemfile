@@ -98,3 +98,6 @@ gem 'rubyXL', '~> 3.4'
 
 # for multiple importing from Excel file to DB
 gem 'activerecord-import', '~> 1.2'
+
+# for app localization
+gem 'rails-i18n', '~> 7'
