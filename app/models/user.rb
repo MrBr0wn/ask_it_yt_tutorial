@@ -3,6 +3,12 @@ class User < ApplicationRecord
 
   has_secure_password validations: false
 
+  # relationship User to questions
+  has_many :questions, dependent: :destroy
+
+  # relationship User to answers
+  has_many :answers, dependent: :destroy
+
   validate :password_presence
   validate :correct_old_password, on: :update, if: -> { password.present? }
   validates :password, confirmation: true, allow_blank: true
