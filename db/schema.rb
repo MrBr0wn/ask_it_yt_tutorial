@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_30_113822) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_01_143640) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_30_113822) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_token_digest"
+    t.string "gravatar_hash"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

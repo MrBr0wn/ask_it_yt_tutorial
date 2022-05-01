@@ -16,6 +16,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
   validate :password_complexity
 
+  # Callback: Create and Update record; for generating and saving hash for gravatart
+  # #email_changed? is a RoR method for User email field
+  before_save :set_gravatar_hash, if: :email_changed?
+
   def remember_me
     # https://ruby-doc.org/stdlib-2.5.1/libdoc/securerandom/rdoc/Random/Formatter.html#urlsafe_base64-method
     self.remember_token = SecureRandom.urlsafe_base64
@@ -41,6 +45,14 @@ class User < ApplicationRecord
   end
 
   private
+
+  def set_gravatar_hash
+    return if email.blank?
+
+    # generating hash from User email for gravatar API
+    hash = Digest::MD5.hexdigest(email.strip.downcase)
+    self.gravatar_hash = hash
+  end
 
   def digest(string)
     cost = if ActiveModel::SecurePassword.min_cost
