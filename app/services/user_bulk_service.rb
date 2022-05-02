@@ -3,9 +3,11 @@ class UserBulkService < ApplicationService
   attr_reader :archive
 
   # Getting temp-file of user's archive
+  # rubocop:disable Lint/MissingSuper
   def initialize(archive_param)
     @archive = archive_param.tempfile
   end
+  # rubocop:enable Lint/MissingSuper
 
   # Manipulatings with user's archive
   def call
