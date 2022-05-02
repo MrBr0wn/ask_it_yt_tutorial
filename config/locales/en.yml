@@ -35,6 +35,11 @@ en:
   en: "Eng"
   ru: "Рус"
 
+  activerecord:
+    attributes:
+      comment:
+        body: "Body"
+
   pages:
     index:
       title: "Welcome to AskIt!"
@@ -43,5 +48,13 @@ en:
     home: "Home"
 
   questions:
+    show:
+      comments: "Commentaries"
     destroy:
       success: "Question deleted!"
+
+  comments:
+    create:
+      success: "Comment created!"
+    destroy:
+      success: "Comment deleted!"

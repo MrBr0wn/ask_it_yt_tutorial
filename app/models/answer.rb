@@ -1,4 +1,6 @@
 class Answer < ApplicationRecord
+  include Commentable
+
   belongs_to :question
 
   # relationship Answers to User

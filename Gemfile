@@ -75,6 +75,9 @@ group :development do
   gem 'rubocop', '~> 1.28.2', require: false
 
   gem 'rubocop-performance', '~> 1.13', require: false
+
+  # for optimization; help to kill N+1 queries and unused eager loading.
+  gem 'bullet'
 end
 
 # for pagination

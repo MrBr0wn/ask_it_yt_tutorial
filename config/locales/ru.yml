@@ -11,6 +11,8 @@ ru:
         body: "Текст"
       answer:
         body: "Текст"
+      comment:
+        body: "Текст"
 
   pages:
     index:
@@ -20,5 +22,13 @@ ru:
     home: "Главная"
 
   questions:
+    show:
+      comments: "Комментарии"
     destroy:
       success: "Вопрос удалён!"
+
+  comments:
+    create:
+      success: "Комментарий добавлен!"
+    destroy:
+      success: "Комментарий удалён!"

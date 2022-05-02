@@ -14,7 +14,14 @@ Rails.application.routes.draw do
     # resources :questions, only: %i[index new create edit update destroy show]
     # it's the same as above ↑
     resources :questions do
+      resources :comments, only: %i[create destroy]
+
       resources :answers, except: %i[new show]
+    end
+
+    # doubling for Questions and Answers
+    resources :answers, except: %i[new show] do
+      resources :comments, only: %i[create destroy]
     end
 
     # administrator resource /admin/users

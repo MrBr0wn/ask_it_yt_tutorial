@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+  include Commentable
+
   has_many :answers, dependent: :destroy
 
   # relationship Questions to User
