@@ -9,8 +9,11 @@ ru:
       question:
         title: "Заголовок"
         body: "Текст"
+        tags: "Теги"
+        tag_ids: "Теги"
       answer:
         body: "Текст"
+        question: "Вопрос"
       comment:
         body: "Текст"
 

@@ -14,8 +14,14 @@
 #   Question.create(title:, body:)
 # end
 
-# Setting avatar for each User
+# Set up avatar for each User
 User.find_each do |user|
   user.send(:set_gravatar_hash)
   user.save
+end
+
+# Generating random Tags
+30.times do
+  title = Faker::Hipster.word
+  Tag.create(title:)
 end
