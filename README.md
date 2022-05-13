@@ -1,24 +1,35 @@
-# README
+# Ask It App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Приложение, вдохновленное stackoverflow.com по туториалу с YT-канала [Ильи Круковского](https://www.youtube.com/channel/UCN2waErKU52T_41pGgUimXw)
 
-Things you may want to cover:
+## Стэк
+```
+Ruby 3.1.1
+Rails 7.0.2
+Postgresql
+Bootstrap 5
+```
 
-* Ruby version
+## Функционал
 
-* System dependencies
+- Просмотр вопросов и ответов
+- Регистрация пользователей
+- Создать(задать) вопрос
+    - Обвешать вопрос тэгами
+- Создать(написать) ответ к вопросу
+- Прокомментировать вопрос/ответ
+- Сменить локализацию
 
-* Configuration
+## Запуск
 
-* Database creation
+```git clone this_project```
 
-* Database initialization
+```bundle install```
 
-* How to run the test suite
+```rails db:setup```
 
-* Services (job queues, cache servers, search engines, etc.)
+```rails s```
 
-* Deployment instructions
+## Спасибо
 
-* ...
+Автору и [этому плей-листу](https://www.youtube.com/watch?v=6_ek4hokiak&list=PLWlFXymvoaJ_IY53-NQKwLCkR-KkZ_44-&ab_channel=IlyaKrukowski)
