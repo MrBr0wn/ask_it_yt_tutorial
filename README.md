@@ -33,3 +33,9 @@ Bootstrap 5
 ## Спасибо
 
 Автору и [этому плей-листу](https://www.youtube.com/watch?v=6_ek4hokiak&list=PLWlFXymvoaJ_IY53-NQKwLCkR-KkZ_44-&ab_channel=IlyaKrukowski)
+
+## Demo
+
+[Click](https://mrbrown-ask-it.herokuapp.com/)
+login: ```demo@example.com```
+password: ```Qwerty-123```
